@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Test API')
+    .setTitle('Tsuru Test API')
     .setDescription('The message test API from Tsuru Chat!!')
     .setVersion('1.0')
     .build();
