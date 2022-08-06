@@ -1,32 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { ApiProperty } from '@nestjs/swagger';
 import { faker } from '@faker-js/faker';
 import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'ws';
-
-export class SendMessageDto {
-  @ApiProperty({
-    description: 'The text of the message',
-    example: faker.lorem.sentence(),
-    required: true,
-  })
-  content: string;
-}
-
-export interface Message {
-  id: string;
-  content: string;
-  timestamp: string;
-  sent: boolean;
-}
-
-export interface HelpDeskInterface {
-  id: string;
-  name: string;
-  email: string;
-  avatar: string;
-  messages: Message[];
-}
+import {
+  HelpDeskInterface,
+  Message,
+  SendMessageDto,
+} from 'src/helpdesk/helpdesk.dto';
 
 const helpDesk: HelpDeskInterface = {
   id: faker.random.alphaNumeric(10),

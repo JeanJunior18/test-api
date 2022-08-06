@@ -14,33 +14,16 @@
 
   <script>
     console.log('Calling WS');
-    const socket = new WebSocket('ws://localhost:3000');
+    const socket = new WebSocket('wss://test-tsuru-api.herokuapp.com/');
 
-    function sendMessage() {
-      console.log('Sending message');
-      socket.send(
-        JSON.stringify({
-          event: 'events',
-          data: 'test',
-        }),
-      );
-    }
     socket.onopen = function () {
-      console.log(socket)
       console.log('Connected');
       socket.onmessage = function (data) {
         console.log('On message', data.data);
       };
-
-      // socket.send(
-      //   JSON.stringify({
-      //     event: 'events',
-      //     data: 'test',
-      //   }),
-      // );
     };
-
   </script>
+
 </body>
 
 </html>
