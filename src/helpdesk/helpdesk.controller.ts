@@ -1,19 +1,19 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { HelpdeskService, SendMessageDto } from 'src/helpdesk/helpdesk.service';
+import { HelpDeskService, SendMessageDto } from 'src/helpdesk/helpdesk.service';
 
-@ApiTags('Helpdesk')
+@ApiTags('HelpDesk')
 @Controller('helpdesk')
-export class HelpdeskController {
-  constructor(private readonly helpdeskService: HelpdeskService) {}
+export class HelpDeskController {
+  constructor(private readonly helpDeskService: HelpDeskService) {}
 
   @Get('')
-  getHelpdesk() {
-    return this.helpdeskService.getHelpdesk();
+  getHelpDesk() {
+    return this.helpDeskService.getHelpDesk();
   }
 
   @Post('sendMessage')
   sendMessage(@Body() message: SendMessageDto) {
-    return this.helpdeskService.sendMessage(message);
+    return this.helpDeskService.sendMessage(message);
   }
 }

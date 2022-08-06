@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { HelpdeskModule } from './helpdesk/helpdesk.module';
+import { HelpDeskModule } from './helpdesk/helpdesk.module';
 
 @Module({
-  imports: [HelpdeskModule],
+  imports: [HelpDeskModule],
   controllers: [],
   providers: [],
 })

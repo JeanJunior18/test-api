@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  Hello
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    console.log('Calling WS');
+    const socket = new WebSocket('ws://localhost:3000');
+
+    function sendMessage() {
+      console.log('Sending message');
+      socket.send(
+        JSON.stringify({
+          event: 'events',
+          data: 'test',
+        }),
+      );
+    }
+    socket.onopen = function () {
+      console.log(socket)
+      console.log('Connected');
+      socket.onmessage = function (data) {
+        console.log('On message', data.data);
+      };
+
+      // socket.send(
+      //   JSON.stringify({
+      //     event: 'events',
+      //     data: 'test',
+      //   }),
+      // );
+    };
+
+  </script>
+</body>
+
+</html>

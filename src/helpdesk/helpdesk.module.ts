@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { HelpdeskService } from './helpdesk.service';
-import { HelpdeskController } from './helpdesk.controller';
+import { HelpDeskService } from './helpdesk.service';
+import { HelpDeskController } from './helpdesk.controller';
 
 @Module({
-  providers: [HelpdeskService],
-  controllers: [HelpdeskController],
+  providers: [HelpDeskService],
+  controllers: [HelpDeskController],
 })
-export class HelpdeskModule {}
+export class HelpDeskModule {}

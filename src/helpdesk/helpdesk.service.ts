@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 import { faker } from '@faker-js/faker';
+import { WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { Server } from 'ws';
 
 export class SendMessageDto {
   @ApiProperty({
@@ -9,15 +11,6 @@ export class SendMessageDto {
     required: true,
   })
   content: string;
-
-  @ApiProperty({
-    description:
-      'User sent a message? It was sent and it was true, it was received and it was false',
-    example: true,
-    required: false,
-    default: true,
-  })
-  sent: boolean;
 }
 
 export interface Message {
@@ -27,7 +20,7 @@ export interface Message {
   sent: boolean;
 }
 
-export interface User {
+export interface HelpDeskInterface {
   id: string;
   name: string;
   email: string;
@@ -35,7 +28,7 @@ export interface User {
   messages: Message[];
 }
 
-const user: User = {
+const helpDesk: HelpDeskInterface = {
   id: faker.random.alphaNumeric(10),
   name: faker.name.findName(),
   email: faker.internet.email(),
@@ -57,19 +50,47 @@ const user: User = {
 };
 
 @Injectable()
-export class HelpdeskService {
-  getHelpdesk(): User {
-    return user;
+@WebSocketGateway()
+export class HelpDeskService {
+  @WebSocketServer() server: Server;
+
+  getHelpDesk(): HelpDeskInterface {
+    return helpDesk;
   }
 
-  sendMessage(message: { content: string; sent: boolean }): Message {
-    const newMessage = {
+  sendMessage(message: SendMessageDto): Message {
+    const newMessage: Message = {
       id: faker.random.alphaNumeric(10),
       content: message.content,
       timestamp: new Date().toISOString(),
-      sent: message.sent || true,
+      sent: true,
     };
-    user.messages.push(newMessage);
+
+    this.sendBroadcast(newMessage);
+
+    setTimeout(() => {
+      this.autoReplyMessage();
+    }, 1000);
+
+    helpDesk.messages.push(newMessage);
     return newMessage;
+  }
+
+  private autoReplyMessage(): Message {
+    const newMessage: Message = {
+      id: faker.random.alphaNumeric(10),
+      content: faker.lorem.sentence(),
+      timestamp: new Date().toISOString(),
+      sent: false,
+    };
+    this.sendBroadcast(newMessage);
+    helpDesk.messages.push(newMessage);
+    return newMessage;
+  }
+
+  private sendBroadcast(message: Message): void {
+    this.server.clients.forEach((client) => {
+      client.send(JSON.stringify(message));
+    });
   }
 }

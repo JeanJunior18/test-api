@@ -707,6 +707,14 @@
     multer "1.4.4-lts.1"
     tslib "2.4.0"
 
+"@nestjs/platform-ws@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-ws/-/platform-ws-9.0.8.tgz#16732e1228a593a88a68daa4a197d92c273c3008"
+  integrity sha512-7qFNHXpz5mYxCRkz1NpBP5R0Sdp0NSRW8A+myWYKlz18vO6H07JfcKeN2gNRrJuNq9j77K6pDNrMWFNrCo58fw==
+  dependencies:
+    tslib "2.4.0"
+    ws "8.8.1"
+
 "@nestjs/schematics@^8.0.0", "@nestjs/schematics@^8.0.3":
   version "8.0.11"
   resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-8.0.11.tgz#5d0c56184826660a2c01b1c326dbdbb12880e864"
@@ -734,6 +742,15 @@
   resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-8.4.7.tgz#fe4f356c0e081e25fe8c899a65e91dd88947fd13"
   integrity sha512-aedpeJFicTBeiTCvJWUG45WMMS53f5eu8t2fXsfjsU1t+WdDJqYcZyrlCzA4dL1B7MfbqaTURdvuVVHTmJO8ag==
   dependencies:
+    tslib "2.4.0"
+
+"@nestjs/websockets@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-9.0.8.tgz#58034fd014d2c20f3d13568a3a86f6e0fe21d231"
+  integrity sha512-3ZfYiqhBOKTscntOcT4py5YAT7hLlG6A++6rXAN/vNWSCmtYFWw5JeXQTelImXGbGyoA8y/oDm+wdpeV2UE7Dg==
+  dependencies:
+    iterare "1.2.1"
+    object-hash "3.0.0"
     tslib "2.4.0"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -1009,6 +1026,13 @@
   integrity sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==
   dependencies:
     "@types/superagent" "*"
+
+"@types/ws@^8.5.3":
+  version "8.5.3"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.3.tgz#7d25a1ffbecd3c4f2d35068d0b283c037003274d"
+  integrity sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==
+  dependencies:
+    "@types/node" "*"
 
 "@types/yargs-parser@*":
   version "21.0.0"
@@ -4989,6 +5013,11 @@ write-file-atomic@^3.0.0:
     is-typedarray "^1.0.0"
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
+
+ws@8.8.1, ws@^8.8.1:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
+  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
 
 ws@^7.4.6:
   version "7.5.9"
